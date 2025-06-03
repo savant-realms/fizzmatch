@@ -28,3 +28,9 @@ console.log(topMatch("banan", items));    // { item: 'banana', distance: 1 }
 npm install
 npm run build
 ```
+
+## Links
+
+GitHub Repo: [https://github.com/savant-realms/fizzmatch](https://github.com/savant-realms/fizzmatch)
+
+NPM package: [https://www.npmjs.com/package/@savant-realms/fizzmatch](https://www.npmjs.com/package/@savant-realms/fizzmatch)
