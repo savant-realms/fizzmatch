@@ -1,36 +1,31 @@
-// src/index.ts
-
 /**
- * Compute the Levenshtein distance between two strings.
- * Basic implementation using a 2D matrix.
+ * Optimized Levenshtein distance using only two rows.
  */
 export function levenshteinDistance(a: string, b: string): number {
-    const m = a.length;
-    const n = b.length;
-    // Create a (m+1)x(n+1) matrix
-    const dp: number[][] = Array.from({ length: m + 1 }, () =>
-        Array(n + 1).fill(0)
-    );
+    let m = a.length;
+    let n = b.length;
 
-    // Initialize base cases
-    for (let i = 0; i <= m; i++) {
-        dp[i][0] = i;
-    }
-    for (let j = 0; j <= n; j++) {
-        dp[0][j] = j;
+    // Ensure n <= m to use less space
+    if (n > m) {
+        [a, b] = [b, a];
+        [m, n] = [n, m];
     }
 
-    // Populate matrix
+    let previousRow: number[] = Array.from({ length: n + 1 }, (_, i) => i);
+    let currentRow: number[] = Array(n + 1).fill(0);
+
     for (let i = 1; i <= m; i++) {
+        currentRow[0] = i;
         for (let j = 1; j <= n; j++) {
             const cost = a[i - 1] === b[j - 1] ? 0 : 1;
-            dp[i][j] = Math.min(
-                dp[i - 1][j] + 1,     // deletion
-                dp[i][j - 1] + 1,     // insertion
-                dp[i - 1][j - 1] + cost // substitution
+            currentRow[j] = Math.min(
+                previousRow[j] + 1,       // deletion
+                currentRow[j - 1] + 1,    // insertion
+                previousRow[j - 1] + cost // substitution
             );
         }
+        [previousRow, currentRow] = [currentRow, previousRow];
     }
 
-    return dp[m][n];
+    return previousRow[n];
 }
