@@ -1,0 +1,28 @@
+{
+    "name": "fizzmatch",
+    "version": "0.1.0",
+    "description": "A TypeScript package for fuzzy string search",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc",
+        "prepare": "npm run build"
+    },
+    "keywords": [
+        "fuzzy",
+        "search",
+        "levenshtein",
+        "typescript"
+    ],
+    "author": "Savant Realms <info@savantrealms.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^22.15.29",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.3"
+    },
+    "engines": {
+        "node": ">=20.0.0",
+        "npm": ">=10.0.0"
+    }
+}
