@@ -2,6 +2,10 @@
 
 FizzMatch: A TypeScript package for fuzzy string search, implemented from scratch.
 
+## Overview
+
+FizzMatch is a lightweight TypeScript module for fuzzy string search, implemented from scratch using Levenshtein distance. Perfect for auto-complete, typo-tolerant lookup, and search-as-you-type features.
+
 ## Installation
 
 ```bash
