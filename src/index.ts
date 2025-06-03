@@ -77,3 +77,28 @@ export function search(
         return a.distance - b.distance;
     });
 }
+
+/**
+ * Return the single best match, or undefined if none within threshold.
+ */
+export function topMatch(
+    query: string,
+    list: string[],
+    options: SearchOptions = {}
+): SearchResult | undefined {
+    const results = search(query, list, options);
+    return results.length > 0 ? results[0] : undefined;
+}
+
+/**
+ * Return up to n top matches.
+ */
+export function topNMatches(
+    query: string,
+    list: string[],
+    n: number,
+    options: SearchOptions = {}
+): SearchResult[] {
+    const results = search(query, list, options);
+    return results.slice(0, n);
+}
